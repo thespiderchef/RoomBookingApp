@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>             <!-- Status colours for room tiles (used in dashboard), based on tested wireframes -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="ink">#222222</color>
+    <color name="muted">#555555</color>
+    <color name="grey">#EDEDED</color>
+    <color name="divider">#CCCCCC</color>
+    <color name="booked">#B3261E</color>
+    <color name="booked_bg">#FBE4E2</color>
+    <color name="vacant">#1E7B3E</color>
+    <color name="vacant_bg">#E6F4EA</color>
+    <color name="vacant_text">#1E6B37</color>
+</resources>
