@@ -1,8 +1,14 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+    <!-- Brand colours: dark ink for primary buttons and text -->
     <style name="Base.Theme.RoomBookingApp" parent="Theme.Material3.Light.NoActionBar">
         <item name="colorPrimary">@color/ink</item>
         <item name="colorOnPrimary">@android:color/white</item>
+        <!-- Override Material 3 surface tints so cards, tabs and nav bars stay white,
+     matching the greyscale design - the lilac pink was annoying me (red/green is reserved for room status) -->
+        <item name="colorSurface">@android:color/white</item>
+        <item name="colorSurfaceContainer">@android:color/white</item>
+        <item name="colorSurfaceContainerLow">@android:color/white</item>
+        <item name="colorSecondaryContainer">@color/grey</item>
     </style>
 
     <style name="Theme.RoomBookingApp" parent="Base.Theme.RoomBookingApp" />
