@@ -282,14 +282,15 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:weightSum="2">
 
                 <!-- Meeting 5: Vacant -->
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/tile_meeting_5"
                     style="@style/Widget.Material3.CardView.Outlined"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
                     android:clickable="true"
@@ -301,7 +302,7 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:minHeight="88dp"
                         android:orientation="vertical"
                         android:padding="12dp">
@@ -330,13 +331,6 @@
                             app:ensureMinTouchTargetSize="false" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
-
-                <!-- Empty slot keeps the last tile half width -->
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1" />
             </LinearLayout>
 
             <TextView
