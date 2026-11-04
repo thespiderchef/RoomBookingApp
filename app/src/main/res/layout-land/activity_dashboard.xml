@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Landscape version of the Manager Dashboard: side navigation rail,
+     wider room grid, and a detail panel for the selected room -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="horizontal"
+    tools:context=".DashboardActivity">
+
+    <!-- Side navigation rail (replaces the bottom nav in landscape) -->
+    <com.google.android.material.navigationrail.NavigationRailView
+        android:id="@+id/nav_rail"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/menu_manager" />
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@color/divider" />
+
+    <!-- Main column: toolbar and room grid -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:subtitle="Tue 27 Oct, 14:00 · 3 booked · 4 vacant"
+            app:title="Dashboard" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <!-- Meeting 1: Booked -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/tile_meeting_1"
+                        style="@style/Widget.Material3.CardView.Outlined"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="4dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:cardBackgroundColor="@color/booked_bg"
+                        app:cardCornerRadius="10dp"
+                        app:strokeColor="@color/booked"
+                        app:strokeWidth="2dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:minHeight="72dp"
+                            android:orientation="vertical"
+                            android:padding="10dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Meeting 1"
+                                android:textColor="@color/ink"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.chip.Chip
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:checkable="false"
+                                android:clickable="false"
+                                android:text="Booked"
+                                android:textColor="@android:color/white"
+                                android:textSize="12sp"
+                                app:chipBackgroundColor="@color/booked"
+                                app:chipMinHeight="26dp"
+                                app:chipStrokeWidth="0dp"
+                                app:ensureMinTouchTargetSize="false" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- Meeting 2: Vacant (selected) -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/tile_meeting_2"
+                        style="@style/Widget.Material3.CardView.Outlined"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="4dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:cardBackgroundColor="@color/vacant_bg"
+                        app:cardCornerRadius="10dp"
+                        app:strokeColor="@color/vacant"
+                        app:strokeWidth="3dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:minHeight="72dp"
+                            android:orientation="vertical"
+                            android:padding="10dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Meeting 2"
+                                android:textColor="@color/ink"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.chip.Chip
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:checkable="false"
+                                android:clickable="false"
+                                android:text="Vacant"
+                                android:textColor="@color/vacant_text"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                app:chipBackgroundColor="@android:color/white"
+                                app:chipMinHeight="26dp"
+                                app:chipStrokeColor="@color/vacant"
+                                app:chipStrokeWidth="1dp"
+                                app:ensureMinTouchTargetSize="false" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- Meeting 3: Booked -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/tile_meeting_3"
+                        style="@style/Widget.Material3.CardView.Outlined"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="4dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:cardBackgroundColor="@color/booked_bg"
+                        app:cardCornerRadius="10dp"
+                        app:strokeColor="@color/booked"
+                        app:strokeWidth="2dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:minHeight="72dp"
+                            android:orientation="vertical"
+                            android:padding="10dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Meeting 3"
+                                android:textColor="@color/ink"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.chip.Chip
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:checkable="false"
+                                android:clickable="false"
+                                android:text="Booked"
+                                android:textColor="@android:color/white"
+                                android:textSize="12sp"
+                                app:chipBackgroundColor="@color/booked"
+                                app:chipMinHeight="26dp"
+                                app:chipStrokeWidth="0dp"
+                                app:ensureMinTouchTargetSize="false" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- Meeting 4: Vacant -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/tile_meeting_4"
+                        style="@style/Widget.Material3.CardView.Outlined"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="4dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:cardBackgroundColor="@color/vacant_bg"
+                        app:cardCornerRadius="10dp"
+                        app:strokeColor="@color/vacant"
+                        app:strokeWidth="2dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:minHeight="72dp"
+                            android:orientation="vertical"
+                            android:padding="10dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Meeting 4"
+                                android:textColor="@color/ink"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.chip.Chip
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:checkable="false"
+                                android:clickable="false"
+                                android:text="Vacant"
+                                android:textColor="@color/vacant_text"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                app:chipBackgroundColor="@android:color/white"
+                                app:chipMinHeight="26dp"
+                                app:chipStrokeColor="@color/vacant"
+                                app:chipStrokeWidth="1dp"
+                                app:ensureMinTouchTargetSize="false" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="4">
+
+                    <!-- Meeting 5: Vacant -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/tile_meeting_5"
+                        style="@style/Widget.Material3.CardView.Outlined"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="4dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:cardBackgroundColor="@color/vacant_bg"
+                        app:cardCornerRadius="10dp"
+                        app:strokeColor="@color/vacant"
+                        app:strokeWidth="2dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:minHeight="72dp"
+                            android:orientation="vertical"
+                            android:padding="10dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Meeting 5"
+                                android:textColor="@color/ink"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.chip.Chip
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:checkable="false"
+                                android:clickable="false"
+                                android:text="Vacant"
+                                android:textColor="@color/vacant_text"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                app:chipBackgroundColor="@android:color/white"
+                                app:chipMinHeight="26dp"
+                                app:chipStrokeColor="@color/vacant"
+                                app:chipStrokeWidth="1dp"
+                                app:ensureMinTouchTargetSize="false" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- Seminar 1: Booked -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/tile_seminar_1"
+                        style="@style/Widget.Material3.CardView.Outlined"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="4dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:cardBackgroundColor="@color/booked_bg"
+                        app:cardCornerRadius="10dp"
+                        app:strokeColor="@color/booked"
+                        app:strokeWidth="2dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:minHeight="72dp"
+                            android:orientation="vertical"
+                            android:padding="10dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Seminar 1"
+                                android:textColor="@color/ink"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.chip.Chip
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:checkable="false"
+                                android:clickable="false"
+                                android:text="Booked"
+                                android:textColor="@android:color/white"
+                                android:textSize="12sp"
+                                app:chipBackgroundColor="@color/booked"
+                                app:chipMinHeight="26dp"
+                                app:chipStrokeWidth="0dp"
+                                app:ensureMinTouchTargetSize="false" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- Seminar 2: Vacant -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/tile_seminar_2"
+                        style="@style/Widget.Material3.CardView.Outlined"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="4dp"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:cardBackgroundColor="@color/vacant_bg"
+                        app:cardCornerRadius="10dp"
+                        app:strokeColor="@color/vacant"
+                        app:strokeWidth="2dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:minHeight="72dp"
+                            android:orientation="vertical"
+                            android:padding="10dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Seminar 2"
+                                android:textColor="@color/ink"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <com.google.android.material.chip.Chip
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:checkable="false"
+                                android:clickable="false"
+                                android:text="Vacant"
+                                android:textColor="@color/vacant_text"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                app:chipBackgroundColor="@android:color/white"
+                                app:chipMinHeight="26dp"
+                                app:chipStrokeColor="@color/vacant"
+                                app:chipStrokeWidth="1dp"
+                                app:ensureMinTouchTargetSize="false" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@color/divider" />
+
+    <!-- Detail panel for the selected room -->
+    <LinearLayout
+        android:id="@+id/detail_panel"
+        android:layout_width="240dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Meeting Room 2"
+            android:textColor="@color/ink"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.chip.Chip
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:checkable="false"
+            android:clickable="false"
+            android:text="Vacant now"
+            android:textColor="@color/vacant_text"
+            android:textStyle="bold"
+            app:chipBackgroundColor="@android:color/white"
+            app:chipMinHeight="28dp"
+            app:chipStrokeColor="@color/vacant"
+            app:chipStrokeWidth="1dp"
+            app:ensureMinTouchTargetSize="false" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Next booking: 16:00 to 17:00 · [Employee F]"
+            android:textColor="@color/muted"
+            android:textSize="13sp" />
+
+        <!-- Pushes the buttons to the bottom of the panel -->
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/book_this_room_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Book this room"
+            app:cornerRadius="10dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/view_bookings_button"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="View bookings"
+            android:textColor="@color/ink"
+            app:cornerRadius="10dp"
+            app:strokeColor="@color/ink" />
+    </LinearLayout>
+
+</LinearLayout>
